@@ -16,6 +16,7 @@ const hidingPlaces = ['tree', 'shed', 'boulder'];
 
 let correctGuesses = 0;
 let totalGuesses = 0;
+let incorrectGuesses = 0;
 
 shedButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
@@ -36,6 +37,19 @@ boulderButton.addEventListener('click', () => {
 });
 
 function handleGuess(correctSpot, userGuess) {
+    if (userGuess === correctSpot) {
+        totalGuesses++;
+        correctGuesses++;
+    } else {
+        totalGuesses++;
+        incorrectGuesses++; 
+    }
+    lossesEl.textContent = incorrectGuesses;
+    winsEl.textContent = correctGuesses;
+    totalEl.textContent = totalGuesses;
+
+
+
     // reset the styles
     // then increment the guesses
     // then grab the appropriate container element for the correct guess from the DOM
